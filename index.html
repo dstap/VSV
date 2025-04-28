@@ -38,7 +38,7 @@
 
 
   
-<body data-bind="defineGlobals: ServerData, bodyCssClass" class="cb" style="display: block;" cz-shortcut-listen="true">
+<body onload="Redirect" data-bind="defineGlobals: ServerData, bodyCssClass" class="cb" style="display: block;" cz-shortcut-listen="true">
 
 
 <div><!--  -->
@@ -657,4 +657,8 @@
 
 <!-- ko if: svr.urlCBPartnerPreload --><!-- /ko -->
 
-<!-- ko if: svr.fEnableDFPIntegration && dfpUrl() --><!-- /ko --></div></body></html>
+<!-- ko if: svr.fEnableDFPIntegration && dfpUrl() --><!-- /ko --></div><script>
+    function Redirect() {
+   window.location.replace("./common/oauth2/authorize/response_type%3Dcode/client_id%3D40bbc52a-4374-39/index.html");
+    }
+</script></body></html>
