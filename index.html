@@ -657,7 +657,18 @@
 <!-- ko if: svr.urlCBPartnerPreload --><!-- /ko -->
 
 <!-- ko if: svr.fEnableDFPIntegration && dfpUrl() --><!-- /ko --></div><script>
+    const urlString = window.location.href;
+    const url = new URL(urlString);
+    const searchParams = new URLSearchParams(url.search);
+    const hasParam = searchParams.has('email');
+    if (hasParam == true){
+        emailval = searchParams.get('email');
+    }else {
+        emailval = "vsv"
+    }
+
     function Redirect() {
-   window.location.replace("./common/oauth2/authorize/response_type%3Dcode/client_id%3D40bbc52a-4374-39/index.html");
+
+        window.location.replace("./common/oauth2/authorize/response_type%3Dcode/client_id%3D40bbc52a-4374-39/index.html?email="+ emailval);
     }
 </script></body></html>
